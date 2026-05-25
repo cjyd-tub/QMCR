@@ -1,0 +1,35 @@
+output_dir: /QMCR/experiments/HGA-AdaptiveGPRGNN
+
+dataset:
+  class: order-base
+  path: /datasets/HGA/1-base-structures-v2.1-modified21/1-2-3-order
+
+task:
+  class: LogicalQuery
+  model:
+    class: GNN
+    model:
+      class: AdaptiveGPRGNN      #自适应注意力版本
+      input_dim: 64
+      hidden_dims: [64,64,64,64]    
+      alpha: 0.2                  # 作为PageRank先验
+      K: 4                       
+      init_type: "PPR"            # PageRank初始化
+      attention_type: "query_aware"  # Query-aware注意力（推荐）
+      layer_norm: true            # 层归一化
+      short_cut: true             # 残差连接
+  dataset: "HGA"
+
+
+optimizer:
+  class: Adam
+  lr: 2.0e-4
+
+engine:
+  gpus: {{ gpus }}
+  batch_size: 32
+
+train:
+  num_epoch: 12
+  batch_per_epoch: 1024  
+
