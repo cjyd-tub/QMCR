@@ -1,0 +1,15 @@
+HGA数据集 - 查询结构修改版21
+============================================================
+dataset: HGA
+max_answers_per_query: 100
+train_queries: 10
+train_answers: 290771
+train_total_answers: 3114343
+valid_queries: 6
+valid_answers: 248738
+valid_total_answers: 839310
+test_queries: 6
+test_answers: 191406
+test_total_answers: 419982
+vendor_complementary: 702
+semantic_complementary: 1246
